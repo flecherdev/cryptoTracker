@@ -3,7 +3,8 @@ import {View, Text, Pressable, StyleSheet} from 'react-native';
 
 class CoinsScreen extends Component {
   handlerPress = () => {
-    console.log('Press Handler');
+    console.log('Press Handler', this.props.navigation.navigate);
+    this.props.navigation.navigate('Detail');
   };
 
   render() {

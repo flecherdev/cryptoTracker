@@ -8,7 +8,7 @@ const CoinsStack = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Coins" component={CoinsScreen} />
-      <Stack.Screen name="Coins Detail" component={CoinsDetailScreen} />
+      <Stack.Screen name="Detail" component={CoinsDetailScreen} />
     </Stack.Navigator>
   );
 };
