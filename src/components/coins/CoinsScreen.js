@@ -1,7 +1,15 @@
 import React, {Component} from 'react';
 import {View, Text, Pressable, StyleSheet} from 'react-native';
+import Http from '../../libs/http';
 
 class CoinsScreen extends Component {
+  componentDidMount = async () => {
+    const coins = await Http.instance.get(
+      'https://api.coinlore.net/api/tickers/',
+    );
+    console.log('coins', coins);
+  };
+
   handlerPress = () => {
     console.log('Press Handler', this.props.navigation.navigate);
     this.props.navigation.navigate('Detail');
