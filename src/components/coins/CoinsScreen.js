@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
-import {
-  View,
-  Text,
-  FlatList,
-  ActivityIndicator,
-  StyleSheet,
-} from 'react-native';
+import {View, FlatList, ActivityIndicator, StyleSheet} from 'react-native';
 import Http from '../../libs/http';
 import {CoinsItem} from './CoinsItem';
+import Colors from '../../utils/colors';
 
 class CoinsScreen extends Component {
   state = {
@@ -48,8 +43,7 @@ class CoinsScreen extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    color: 'black',
+    backgroundColor: Colors.charade,
   },
   titleText: {
     color: '#fff',
