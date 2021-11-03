@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, View, Image, StyleSheet} from 'react-native';
+import {Text, View, Image, StyleSheet, Platform} from 'react-native';
 import Colors from '../../utils/colors';
 
 export const CoinsItem = ({item}) => {
@@ -33,6 +33,8 @@ const style = StyleSheet.create({
     padding: 16,
     borderBottomColor: Colors.zircon,
     borderBottomWidth: 2,
+    paddingLeft: Platform.OS === 'ios' ? 0 : 16,
+    marginLeft: Platform.OS === 'ios' ? 16 : 0,
   },
   row: {
     flexDirection: 'row',
@@ -55,6 +57,7 @@ const style = StyleSheet.create({
   percentText: {
     color: '#fff',
     fontSize: 12,
+    marginRight: 8,
   },
   imgIcon: {
     width: 22,
