@@ -7,3 +7,5 @@ npm install @react-navigation/native @react-navigation/stack npm install react-n
 2- Delete your Pods folder (I like to use the command '-rm -rf Pods' in the terminal for this)
 3- Delete your .xcworkspace
 4- Execute in terminal pod install
+## Run 
+npm run ios or npx react-native run-ios // change ios for android
