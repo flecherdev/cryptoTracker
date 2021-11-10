@@ -21,8 +21,8 @@ const App = () => {
     <NavigationContainer>
       <Tabs.Navigator
         tabBarOptions={{
-          // tintColor: '#fefefe',
-          style: {
+          activeTintColor: '#fefefe',
+          tabStyle: {
             backgroundColor: Colors.blackPearl,
           },
         }}>
@@ -30,6 +30,7 @@ const App = () => {
           name="Coins"
           component={CoinsStack}
           options={{
+            headerShown: false,
             tabBarIcon: ({size, color}) => (
               <Image
                 style={{tintColor: color, width: size, height: size}}
@@ -42,6 +43,7 @@ const App = () => {
           name="Favorites"
           component={FavoritesStack}
           options={{
+            headerShown: false,
             tabBarIcon: ({size, color}) => (
               <Image
                 style={{tintColor: color, width: size, height: size}}

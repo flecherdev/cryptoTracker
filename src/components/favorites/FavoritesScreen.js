@@ -8,7 +8,6 @@ class FavoritesScreen extends Component {
     return (
       <View style={styles.container}>
         <FavoritesEmptyState />
-        <Text>hola</Text>
       </View>
     );
   }
