@@ -7,6 +7,7 @@ import {
   SectionList,
   FlatList,
   Pressable,
+  Alert,
 } from 'react-native';
 import Colors from '../../utils/colors';
 import Http from '../../libs/http';
@@ -60,23 +61,50 @@ class CoinsDetailScreen extends Component {
     }
   };
 
-  addFavorite = () => {
+  addFavorite = async () => {
     const coin = JSON.stringify(this.state.coin);
     const key = `favorite-${this.state.coin.id}`;
-    const stored = Store.instance.store(key, coin);
+    const stored = await Store.instance.store(key, coin);
+    console.log('store ', stored);
     if (stored) {
       this.setState({isFavorite: true});
     }
   };
 
-  // removeFavorite = () => {
+  removeFavorite = async () => {
+    Alert.alert('Remove favorite', 'Are you sure?', [
+      {text: 'cancel', onPress: () => {}, style: 'cancel'},
+      {
+        text: 'remove',
+        onPress: async () => {
+          const key = `favorite-${this.state.coin.id}`;
+          await Store.instance.remove(key);
+          this.setState({isFavorite: false});
+        },
+        style: 'destructive',
+      },
+    ]);
+  };
 
-  // };
+  getFavorite = async () => {
+    try {
+      const key = `favorite-${this.state.coin.id}`;
+      const favStr = await Store.instance.get(key);
+      if (favStr != null) {
+        this.setState({isFavorite: true});
+      }
+      console.log(`fav ${favStr}`);
+    } catch (error) {
+      console.log(`get favorite error ${error}`);
+    }
+  };
 
   componentDidMount() {
     const {coin} = this.props.route.params;
     this.getMarket(coin.id);
-    this.setState({coin});
+    this.setState({coin}, () => {
+      this.getFavorite();
+    });
     this.props.navigation.setOptions({title: coin.symbol});
   }
 
